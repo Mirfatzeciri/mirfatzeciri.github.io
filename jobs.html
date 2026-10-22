@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f4ef">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Privat jobdashboard for Mirfat Zeciri.">
+    <title>Mit joboverblik — Mirfat Zeciri</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="jobs.css">
+    <script src="jobs-config.js"></script>
+    <script type="module" src="jobs.js"></script>
+</head>
+<body class="jobs-page">
+    <nav class="site-nav" aria-label="Primær navigation">
+        <div class="container nav-inner">
+            <a class="brand" href="index.html" aria-label="Mirfat Zeciri — tilbage til porteføljen">
+                <span class="brand-mark" aria-hidden="true">MZ</span>
+                <span>Mirfat Zeciri</span>
+            </a>
+            <a class="jobs-back-link" href="index.html">Tilbage til porteføljen <span aria-hidden="true">↗</span></a>
+        </div>
+    </nav>
+
+    <main class="jobs-main">
+        <section class="jobs-hero">
+            <div class="container">
+                <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Privat arbejdsområde</p>
+                <div class="jobs-title-row">
+                    <div>
+                        <h1>Mit job<span>overblik.</span></h1>
+                        <p class="jobs-subtitle">Relevante stillinger og styr på hvert næste skridt.</p>
+                    </div>
+                    <button class="jobs-sign-out" id="sign-out" type="button" hidden>Log ud</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="container jobs-content">
+            <div class="jobs-notice" id="setup-notice" role="status" hidden>
+                <strong>Dashboardet mangler opsætning.</strong>
+                <span>Supabase-adressen og den offentlige browsernøgle skal konfigureres i GitHub repository variables. Se <a href="https://github.com/Mirfatzeciri/mirfatzeciri.github.io/blob/main/SETUP-JOBS.md" target="_blank" rel="noopener noreferrer">opsætningsvejledningen</a>.</span>
+            </div>
+
+            <div class="jobs-notice jobs-notice-error" id="error-notice" role="alert" hidden></div>
+
+            <section class="jobs-auth-panel" id="auth-panel" aria-labelledby="auth-title" hidden>
+                <p class="eyebrow">Kun for dig</p>
+                <h2 id="auth-title">Log ind på dit joboverblik</h2>
+                <p>Vi sender dig et sikkert loginlink på mail. Dine ansøgningsnoter og statusser er kun synlige for din konto.</p>
+                <form id="login-form">
+                    <label for="login-email">Din e-mail</label>
+                    <div class="jobs-login-row">
+                        <input id="login-email" name="email" type="email" autocomplete="email" required>
+                        <button class="button button-primary" type="submit">Send loginlink <span aria-hidden="true">↗</span></button>
+                    </div>
+                </form>
+                <p class="jobs-auth-feedback" id="auth-feedback" role="status" aria-live="polite"></p>
+            </section>
+
+            <section id="dashboard" hidden aria-label="Joboverblik">
+                <div class="jobs-stats" id="stats" aria-label="Ansøgningsstatus"></div>
+                <div class="jobs-toolbar">
+                    <label class="jobs-search-label" for="job-search">Søg i opslag</label>
+                    <input id="job-search" class="jobs-search" type="search" placeholder="Titel, virksomhed eller sted…">
+                    <label class="jobs-filter-label" for="status-filter">Vis</label>
+                    <select id="status-filter" class="jobs-filter">
+                        <option value="all">Alle opslag</option>
+                        <option value="new">Nye</option>
+                        <option value="interested">Interessante</option>
+                        <option value="applied">Søgt</option>
+                        <option value="interview">Samtale</option>
+                        <option value="rejected">Afslag</option>
+                        <option value="not_relevant">Ikke relevante</option>
+                    </select>
+                    <button class="jobs-refresh" id="refresh-jobs" type="button">Opdater <span aria-hidden="true">↻</span></button>
+                </div>
+                <p class="jobs-updated" id="last-updated"></p>
+                <div class="jobs-list" id="jobs-list" aria-live="polite"></div>
+                <p class="jobs-empty" id="empty-state" hidden>Der er ingen opslag, der matcher dit filter endnu. Nye opslag hentes automatisk hver dag.</p>
+                <p class="jobs-footnote">Opslagene hentes fra Adzuna. Åbn det originale opslag for at se alle detaljer og søge hos arbejdsgiveren.</p>
+            </section>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="brand footer-brand" href="index.html">
+                <span class="brand-mark" aria-hidden="true">MZ</span>
+                <span>Mirfat Zeciri</span>
+            </a>
+            <p>Privat joboverblik · København</p>
+            <a class="footer-top" href="#">Til toppen <span aria-hidden="true">↑</span></a>
+        </div>
+    </footer>
+</body>
+</html>
